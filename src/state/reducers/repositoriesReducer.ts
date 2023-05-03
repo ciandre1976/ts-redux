@@ -8,7 +8,13 @@ interface RepoType {
   data: string[]
 }
 
-const reducer = (state: RepoType, action: Action): RepoType => {
+const initialsdtate = {
+  loading: false,
+  error: null,
+  data: [],
+}
+
+const reducer = (state: RepoType = initialsdtate, action: Action): RepoType => {
   switch (action.type) {
     case ActionType.SEARCH_REPO:
       return { loading: true, error: null, data: [] }
