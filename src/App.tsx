@@ -1,10 +1,8 @@
-import FindUser from "./state/FindUser";
-
 function App() {
   return (
-    <>
-      <FindUser />
-    </>
+    <div>
+      <h1>App</h1>
+    </div>
   );
 }
 
