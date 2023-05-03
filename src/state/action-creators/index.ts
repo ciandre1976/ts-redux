@@ -1,9 +1,10 @@
 import axios from "axios";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
+import { Dispatch } from 'redux';
 
 export const searchRep = (term: string) => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch<Action>) => {
     dispatch({ type: ActionType.SEARCH_REPO })
     try {
       const data = await axios.get('https://registry.npmjs.org/-/v1/search', {
@@ -11,7 +12,7 @@ export const searchRep = (term: string) => {
           text: term,
         }
       })
-      const names = data.objects.map((res) => {
+      const names: string[] | null = data.objects.map((res) => {
         return res.package.name;
       })
       dispatch({

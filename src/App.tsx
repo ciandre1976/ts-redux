@@ -1,8 +1,11 @@
+import { Provider } from "react-redux";
+import { store } from "./state";
+
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <h1>App</h1>
-    </div>
+    </Provider>
   );
 }
 
