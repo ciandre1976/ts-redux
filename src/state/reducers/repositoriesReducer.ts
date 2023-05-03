@@ -1,30 +1,20 @@
+import { Action } from "../actions";
+import { ActionType } from "../action-types";
+
+
 interface RepoType {
   loading: boolean;
   error: string | null;
   data: string[]
 }
-interface SearchRepoAction {
-  type: 'search_repo';
-}
-interface SearchRepoActionSuccess {
-  type: 'search_repo_success';
-  payload: string[];
-}
 
-interface SearchRepoActionError {
-  type: 'search_repo_error';
-  payload: 'string'
-}
-
-const reducer = (state: RepoType, action: SearchRepoAction |
-  SearchRepoActionSuccess |
-  SearchRepoActionError): RepoType => {
+const reducer = (state: RepoType, action: Action): RepoType => {
   switch (action.type) {
-    case 'search_repo':
+    case ActionType.SEARCH_REPO:
       return { loading: true, error: null, data: [] }
-    case 'search_repo_success':
+    case ActionType.SEARCH_REPO_SUCCESS:
       return { loading: false, error: null, data: action.payload }
-    case 'search_repo_error':
+    case ActionType.SEARCH_REPO_ERROR:
       return { loading: false, error: action.payload, data: [] }
     default:
       return state;
